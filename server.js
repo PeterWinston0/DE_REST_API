@@ -9,6 +9,14 @@ const authRoutes = require("./routes/auth");
 
 const app = express();
 
+//Swagger Dependencies
+const swaggerUI = require('swagger-ui-express');
+const yaml = require('yamljs');
+
+//Setup Swagger
+const swaggerDefinition = yaml.load('./swagger.yaml');
+app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDefinition))
+
 //const { verifyToken } = require("./validation");
 
 // ENV File
@@ -51,24 +59,16 @@ app.listen(PORT ,function() {
     console.log("server is running on port" + PORT);
 })
 
-// 404 Handler
-app.use((req, res, next) => {
-    next(createError(404))
-})
-
-// error handler
-app.use(function(err, req, res, next) {
-    console.error(err.message);
-    if (!err.statusCode) err.statusCode = 500;
-    res.status(err.statusCode).send(err.message)
-})
-
-//Swagger Dependencies
- const swaggerUI = require('swagger-ui-express');
- const yaml = require('yamljs');
-
-//Setup Swagger
- const swaggerDefinition = yaml.load('./swagger.yaml');
- app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDefinition))
-
 module.exports = app;
+
+// // 404 Handler
+// app.use((req, res, next) => {
+//     next(createError(404))
+// })
+
+// // error handler
+// app.use(function(err, req, res, next) {
+//     console.error(err.message);
+//     if (!err.statusCode) err.statusCode = 500;
+//     res.status(err.statusCode).send(err.message)
+// })

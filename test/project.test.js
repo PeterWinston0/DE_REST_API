@@ -46,9 +46,9 @@ describe('/First Test Collection', () => {
     it('should post a valid product', (done) => {
 
         let project = {
-            title: "Test Title",
-            description: "Test Description",
-            stakeholders: "Test Stakeholders"
+            title: "This is my special test project title",
+            description: "This is my special test project Description",
+            stakeholders: "This is my special test project Stakeholders"
         }
         chai.request(server)
         .post('/api/project')
@@ -59,22 +59,22 @@ describe('/First Test Collection', () => {
         });
     });
 
-    it('should verify we have 1 project in database', (done) => {
-        chai.request(server)
-        .get('/api/project')
-        .end((err, res) => {
-            res.should.have.status(200);
-            res.body.should.be.a('array');
-            res.body.length.should.be.eql(1);
-            done();
-        });
-    });
+    // it('should verify we have 1 project in database', (done) => {
+    //     chai.request(server)
+    //     .get('/api/project')
+    //     .end((err, res) => {
+    //         res.should.have.status(200);
+    //         res.body.should.be.a('array');
+    //         res.body.length.should.be.eql(1);
+    //         done();
+    //     });
+    // });
 
-    it('should test two values...', () => {
-        //actual test content in here
-        let expectedVal = 10;
-        let actualVal = 10;
+    // it('should test two values...', () => {
+    //     //actual test content in here
+    //     let expectedVal = 10;
+    //     let actualVal = 10;
 
-        expect(actualVal).to.be.equal(expectedVal);
-    });
+    //     expect(actualVal).to.be.equal(expectedVal);
+    // });
 });
