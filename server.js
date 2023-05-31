@@ -61,11 +61,6 @@ app.listen(PORT ,function() {
 
 module.exports = app;
 
-// // 404 Handler
-// app.use((req, res, next) => {
-//     next(createError(404))
-// })
-
 // // error handler
 // app.use(function(err, req, res, next) {
 //     console.error(err.message);
